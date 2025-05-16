@@ -4,9 +4,12 @@
  */
 package com.buenSabor.BackEnd.models.venta;
 
+import com.buenSabor.BackEnd.services.enums.TypeDelivery;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +35,8 @@ public class TipoEnvio implements Serializable {
     @Column(name = "id")
     private Long id;
     @Column(name = "nombre_envio")
-    private String nombreEnvio;
+    @Enumerated(EnumType.STRING)
+    private TypeDelivery tipoDelivery;
     @OneToMany(mappedBy = "tipoEnvio", fetch = FetchType.EAGER)
     private List<Pedido> pedidoList;
 
@@ -51,12 +55,8 @@ public class TipoEnvio implements Serializable {
         this.id = id;
     }
 
-    public String getNombreEnvio() {
-        return nombreEnvio;
-    }
-
-    public void setNombreEnvio(String nombreEnvio) {
-        this.nombreEnvio = nombreEnvio;
+    public TypeDelivery getTipoDelivery() {
+        return tipoDelivery;
     }
 
     public List<Pedido> getPedidoList() {

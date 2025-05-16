@@ -4,9 +4,12 @@
  */
 package com.buenSabor.BackEnd.models.venta;
 
+import com.buenSabor.BackEnd.services.enums.TypePromotion;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +34,9 @@ public class TipoPromocion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
-    private String tipo;
+    private TypePromotion tipoPromocion;
     @OneToMany(mappedBy = "idTipoPromocion", fetch = FetchType.EAGER)
     private List<Promocion> promocionList;
 
@@ -51,12 +55,12 @@ public class TipoPromocion implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public TypePromotion getTipoPromocion() {
+        return tipoPromocion;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoPromocion(TypePromotion tipoPromocion) {
+        this.tipoPromocion = tipoPromocion;
     }
 
     public List<Promocion> getPromocionList() {

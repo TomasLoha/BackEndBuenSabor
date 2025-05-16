@@ -4,9 +4,12 @@
  */
 package com.buenSabor.BackEnd.models.venta;
 
+import com.buenSabor.BackEnd.services.enums.TypeState;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +34,9 @@ public class EstadoPedido implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "nombre_estado")
-    private String nombreEstado;
+    private TypeState nombre_estado;
     @OneToMany(mappedBy = "estadoPedido", fetch = FetchType.EAGER)
     private List<Pedido> pedidoList;
 
@@ -51,12 +55,12 @@ public class EstadoPedido implements Serializable {
         this.id = id;
     }
 
-    public String getNombreEstado() {
-        return nombreEstado;
+    public TypeState getNombre_estado() {
+        return nombre_estado;
     }
 
-    public void setNombreEstado(String nombreEstado) {
-        this.nombreEstado = nombreEstado;
+    public void setNombre_estado(TypeState nombre_estado) {
+        this.nombre_estado = nombre_estado;
     }
 
     public List<Pedido> getPedidoList() {

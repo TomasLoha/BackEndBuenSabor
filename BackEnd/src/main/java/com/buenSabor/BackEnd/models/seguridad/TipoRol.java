@@ -4,9 +4,12 @@
  */
 package com.buenSabor.BackEnd.models.seguridad;
 
+import com.buenSabor.BackEnd.services.enums.TypeRol;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +34,9 @@ public class TipoRol implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "nombre_rol")
-    private String nombreRol;
+    private TypeRol rol;
     @OneToMany(mappedBy = "tipoRol", fetch = FetchType.EAGER)
     private List<Rol> rolList;
 
@@ -51,13 +55,14 @@ public class TipoRol implements Serializable {
         this.id = id;
     }
 
-    public String getNombreRol() {
-        return nombreRol;
+    public TypeRol getRol() {
+        return rol;
     }
 
-    public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
+    public void setRol(TypeRol rol) {
+        this.rol = rol;
     }
+
 
     public List<Rol> getRolList() {
         return rolList;
