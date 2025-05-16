@@ -57,14 +57,14 @@ public class Articulo implements Serializable {
     @ManyToMany(mappedBy = "articuloList", fetch = FetchType.EAGER)
     private List<Pedido> pedidoList;
     //
-    @OneToMany(mappedBy = "articulo", fetch = FetchType.EAGER)
-    private List<ArticuloManufacturado> articuloManufacturadoList;
+//    @OneToMany(mappedBy = "articulo", fetch = FetchType.EAGER)
+//    private List<ArticuloManufacturado> articuloManufacturadoList;
     //
     @OneToMany(mappedBy = "idArticulo", fetch = FetchType.EAGER)
     private List<HistoricoPrecioVentaArticulo> historicoPrecioVentaArticuloList;
     //
-    @OneToMany(mappedBy = "idArticulo", fetch = FetchType.EAGER)
-    private List<ArticuloInsumo> articuloInsumoList;
+//    @OneToMany(mappedBy = "idArticulo", fetch = FetchType.EAGER)
+//    private List<ArticuloInsumo> articuloInsumoList;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
@@ -142,13 +142,7 @@ public class Articulo implements Serializable {
         this.pedidoList = pedidoList;
     }
 
-    public List<ArticuloManufacturado> getArticuloManufacturadoList() {
-        return articuloManufacturadoList;
-    }
-
-    public void setArticuloManufacturadoList(List<ArticuloManufacturado> articuloManufacturadoList) {
-        this.articuloManufacturadoList = articuloManufacturadoList;
-    }
+   
 
     public List<HistoricoPrecioVentaArticulo> getHistoricoPrecioVentaArticuloList() {
         return historicoPrecioVentaArticuloList;
@@ -158,13 +152,7 @@ public class Articulo implements Serializable {
         this.historicoPrecioVentaArticuloList = historicoPrecioVentaArticuloList;
     }
 
-    public List<ArticuloInsumo> getArticuloInsumoList() {
-        return articuloInsumoList;
-    }
-
-    public void setArticuloInsumoList(List<ArticuloInsumo> articuloInsumoList) {
-        this.articuloInsumoList = articuloInsumoList;
-    }
+    
 
     public Categoria getCategoria() {
         return categoria;

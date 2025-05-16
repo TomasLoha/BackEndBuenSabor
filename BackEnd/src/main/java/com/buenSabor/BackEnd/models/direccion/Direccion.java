@@ -52,14 +52,15 @@ public class Direccion implements Serializable {
     @Column(name = "longitud")
     private Double longitud;
     
-    
-    @ManyToMany(mappedBy = "direccionList", fetch = FetchType.EAGER)
-    private List<Usuario> usuarioList;
-
     @ManyToOne
     @JoinColumn(name = "id_ciudad")
     private Ciudad ciudad;
 
+    
+    @ManyToMany(mappedBy = "direccionList", fetch = FetchType.EAGER)
+    private List<Usuario> usuarioList;
+
+  
     @OneToMany(mappedBy = "direccion", fetch = FetchType.EAGER)
     private List<Sucursal> sucursalList;
 
