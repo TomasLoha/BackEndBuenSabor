@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -46,7 +47,7 @@ public class Telefono implements Serializable {
     @Column(name = "numero")
     private BigInteger numero;
     //One To Many Corregir 
-    @OneToMany(mappedBy = "telefonoList", fetch = FetchType.EAGER)
+    @ManyToOne( fetch = FetchType.EAGER)
     private Usuario usuario;
 
     

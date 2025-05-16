@@ -26,6 +26,7 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -62,8 +63,8 @@ public class Usuario implements Serializable {
     @Column(name = "existe")
     private Boolean existe;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    private List<Telefono> telefonoList;
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    private List<Telefono> telefonoList = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Rol_Usuario",
