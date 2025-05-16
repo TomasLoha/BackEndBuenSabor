@@ -20,6 +20,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 /**
  *
@@ -27,7 +28,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "Empleado")
-public class Empleado implements Serializable {
+public class Empleado extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

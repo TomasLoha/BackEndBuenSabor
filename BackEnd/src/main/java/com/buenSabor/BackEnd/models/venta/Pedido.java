@@ -36,49 +36,47 @@ import java.util.List;
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "tiempo_estimado")
     @Temporal(TemporalType.TIME)
     private Date tiempoEstimado;
+
     @Column(name = "existe")
     private Boolean existe;
+
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @JoinTable(name = "Detalle_Pedido", joinColumns = {
-        @JoinColumn(name = "id_pedido", referencedColumnName = "id"),
-        @JoinColumn(name = "id_pedido", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_articulo", referencedColumnName = "id"),
-        @JoinColumn(name = "id_articulo", referencedColumnName = "id")})
+
+    @JoinTable(name = "Detalle_Pedido",
+    joinColumns = @JoinColumn(name = "id_pedido", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "id_articulo", referencedColumnName = "id"))
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Articulo> articuloList;
-    @JoinColumns({
-        @JoinColumn(name = "id_estado_pedido", referencedColumnName = "id"),
-        @JoinColumn(name = "id_estado_pedido", referencedColumnName = "id")})
+
+    @JoinColumn(name = "id_estado_pedido", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private EstadoPedido estadoPedido;
-    @JoinColumns({
-        @JoinColumn(name = "id_sucursal", referencedColumnName = "id"),
-        @JoinColumn(name = "id_sucursal", referencedColumnName = "id")})
+
+    @JoinColumn(name = "id_sucursal", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Sucursal sucursal;
-    @JoinColumns({
-        @JoinColumn(name = "id_tipo_envio", referencedColumnName = "id"),
-        @JoinColumn(name = "id_tipo_envio", referencedColumnName = "id")})
+
+    @JoinColumn(name = "id_tipo_envio", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TipoEnvio tipoEnvio;
-    @JoinColumns({
-        @JoinColumn(name = "id_tipo_pago", referencedColumnName = "id"),
-        @JoinColumn(name = "id_tipo_pago", referencedColumnName = "id")})
+
+    @JoinColumn(name = "id_tipo_pago", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TipoPago tipoPago;
-    @JoinColumns({
-        @JoinColumn(name = "id_cliente", referencedColumnName = "id"),
-        @JoinColumn(name = "id_cliente", referencedColumnName = "id")})
+
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
 
@@ -193,5 +191,5 @@ public class Pedido implements Serializable {
     public String toString() {
         return "com.buenSabor.BackEnd.models.direccion.Pedido[ id=" + id + " ]";
     }
-    
+
 }

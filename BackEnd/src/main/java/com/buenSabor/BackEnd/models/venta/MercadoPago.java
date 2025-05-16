@@ -38,9 +38,9 @@ public class MercadoPago implements Serializable {
     private String mpPreferenceId;
     @Column(name = "mpPaymentType")
     private String mpPaymentType;
-    @JoinColumns({
-        @JoinColumn(name = "payment_type_id", referencedColumnName = "id"),
-        @JoinColumn(name = "payment_type_id", referencedColumnName = "id")})
+//    @JoinColumns({
+//        @JoinColumn(name = "payment_type_id", referencedColumnName = "id"),
+//        @JoinColumn(name = "payment_type_id", referencedColumnName = "id")})
     @ManyToOne(fetch = FetchType.EAGER)
     private TipoPago tipoPago;
 
