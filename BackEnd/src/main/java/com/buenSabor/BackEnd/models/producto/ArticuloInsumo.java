@@ -18,12 +18,22 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "ArticuloInsumo")
 public class ArticuloInsumo extends Articulo implements Serializable {
 
@@ -43,68 +53,5 @@ public class ArticuloInsumo extends Articulo implements Serializable {
     @OneToMany(mappedBy = "idArticuloInsumo", fetch = FetchType.EAGER)
     private List<HistoricoPrecioCostoArticuloInsumo> historicoPrecioCostoArticuloInsumoList;
 
-    public ArticuloInsumo() {
-    }
-
-    public ArticuloInsumo(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Double getPrecioCompra() {
-        return precioCompra;
-    }
-
-    public void setPrecioCompra(Double precioCompra) {
-        this.precioCompra = precioCompra;
-    }
-
-    public List<StockArticuloInsumo> getStockArticuloInsumoList() {
-        return stockArticuloInsumoList;
-    }
-
-    public void setStockArticuloInsumoList(List<StockArticuloInsumo> stockArticuloInsumoList) {
-        this.stockArticuloInsumoList = stockArticuloInsumoList;
-    }
-
-    public List<HistoricoPrecioCostoArticuloInsumo> getHistoricoPrecioCostoArticuloInsumoList() {
-        return historicoPrecioCostoArticuloInsumoList;
-    }
-
-    public void setHistoricoPrecioCostoArticuloInsumoList(List<HistoricoPrecioCostoArticuloInsumo> historicoPrecioCostoArticuloInsumoList) {
-        this.historicoPrecioCostoArticuloInsumoList = historicoPrecioCostoArticuloInsumoList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ArticuloInsumo)) {
-            return false;
-        }
-        ArticuloInsumo other = (ArticuloInsumo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.ArticuloInsumo[ id=" + id + " ]";
-    }
-    
+   
 }

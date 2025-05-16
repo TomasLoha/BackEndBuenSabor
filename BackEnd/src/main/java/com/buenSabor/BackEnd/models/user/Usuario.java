@@ -27,12 +27,22 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Usuario")
 public class Usuario implements Serializable {
@@ -52,10 +62,7 @@ public class Usuario implements Serializable {
     @Column(name = "existe")
     private Boolean existe;
     
-      @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "Usuario_Telefono",
-        joinColumns = @JoinColumn(name = "id_usuario"),
-        inverseJoinColumns = @JoinColumn(name = "id_telefono"))
+    @ManyToOne(fetch = FetchType.EAGER)
     private List<Telefono> telefonoList;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -80,124 +87,5 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Pedido> pedidoList;
-    public Usuario() {
-    }
-
-    public Usuario(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Boolean getExiste() {
-        return existe;
-    }
-
-    public void setExiste(Boolean existe) {
-        this.existe = existe;
-    }
-
-    public List<Telefono> getTelefonoList() {
-        return telefonoList;
-    }
-
-    public void setTelefonoList(List<Telefono> telefonoList) {
-        this.telefonoList = telefonoList;
-    }
-
-    public List<Rol> getRolList() {
-        return rolList;
-    }
-
-    public void setRolList(List<Rol> rolList) {
-        this.rolList = rolList;
-    }
-
-    public List<Direccion> getDireccionList() {
-        return direccionList;
-    }
-
-    public void setDireccionList(List<Direccion> direccionList) {
-        this.direccionList = direccionList;
-    }
-
-    public ImagenUsuario getImagenUsuario() {
-        return imagenUsuario;
-    }
-
-    public void setImagenUsuario(ImagenUsuario imagenUsuario) {
-        this.imagenUsuario = imagenUsuario;
-    }
-
-    public UserAuthentication getUserAuthentication() {
-        return userAuthentication;
-    }
-
-    public void setUserAuthentication(UserAuthentication userAuthentication) {
-        this.userAuthentication = userAuthentication;
-    }
-
-    public List<Pedido> getPedidoList() {
-        return pedidoList;
-    }
-
-    public void setPedidoList(List<Pedido> pedidoList) {
-        this.pedidoList = pedidoList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
-            return false;
-        }
-        Usuario other = (Usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.Usuario[ id=" + id + " ]";
-    }
     
 }

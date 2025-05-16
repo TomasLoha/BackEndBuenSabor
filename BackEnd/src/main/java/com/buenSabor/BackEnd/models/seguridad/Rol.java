@@ -23,12 +23,22 @@ import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "Rol")
 public class Rol implements Serializable {
 
@@ -46,68 +56,6 @@ public class Rol implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private TipoRol tipoRol;
 
-    public Rol() {
-    }
-
-    public Rol(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
-    }
-
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
-    }
-
-    public TipoRol getTipoRol() {
-        return tipoRol;
-    }
-
-    public void setTipoRol(TipoRol tipoRol) {
-        this.tipoRol = tipoRol;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Rol)) {
-            return false;
-        }
-        Rol other = (Rol) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.Rol[ id=" + id + " ]";
-    }
+   
     
 }

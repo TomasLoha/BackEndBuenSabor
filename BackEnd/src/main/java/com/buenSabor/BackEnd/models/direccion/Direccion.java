@@ -24,12 +24,22 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Direccion")
 public class Direccion implements Serializable {
@@ -64,108 +74,5 @@ public class Direccion implements Serializable {
     @OneToMany(mappedBy = "direccion", fetch = FetchType.EAGER)
     private List<Sucursal> sucursalList;
 
-    public Direccion() {
-    }
-
-    public Direccion(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Boolean getExiste() {
-        return existe;
-    }
-
-    public void setExiste(Boolean existe) {
-        this.existe = existe;
-    }
-
-    public String getNombreCalle() {
-        return nombreCalle;
-    }
-
-    public void setNombreCalle(String nombreCalle) {
-        this.nombreCalle = nombreCalle;
-    }
-
-    public String getNumeracion() {
-        return numeracion;
-    }
-
-    public void setNumeracion(String numeracion) {
-        this.numeracion = numeracion;
-    }
-
-    public Double getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(Double latitud) {
-        this.latitud = latitud;
-    }
-
-    public Double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(Double longitud) {
-        this.longitud = longitud;
-    }
-
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
-    }
-
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
-    }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public List<Sucursal> getSucursalList() {
-        return sucursalList;
-    }
-
-    public void setSucursalList(List<Sucursal> sucursalList) {
-        this.sucursalList = sucursalList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Direccion)) {
-            return false;
-        }
-        Direccion other = (Direccion) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.Direccion[ id=" + id + " ]";
-    }
-    
+   
 }

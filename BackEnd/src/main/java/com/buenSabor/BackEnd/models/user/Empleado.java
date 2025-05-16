@@ -20,6 +20,11 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 /**
@@ -27,6 +32,11 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "Empleado")
 public class Empleado extends User implements Serializable {
 
@@ -46,68 +56,5 @@ public class Empleado extends User implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Sucursal idSucursal;
 
-    public Empleado() {
-    }
-
-    public Empleado(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Double getSueldo() {
-        return sueldo;
-    }
-
-    public void setSueldo(Double sueldo) {
-        this.sueldo = sueldo;
-    }
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public Sucursal getIdSucursal() {
-        return idSucursal;
-    }
-
-    public void setIdSucursal(Sucursal idSucursal) {
-        this.idSucursal = idSucursal;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Empleado)) {
-            return false;
-        }
-        Empleado other = (Empleado) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.Empleado[ id=" + id + " ]";
-    }
-    
+        
 }

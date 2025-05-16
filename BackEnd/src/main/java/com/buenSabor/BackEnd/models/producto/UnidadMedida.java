@@ -20,12 +20,22 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "Unidad_Medida")
 public class UnidadMedida implements Serializable {
 
@@ -41,61 +51,6 @@ public class UnidadMedida implements Serializable {
     @OneToMany(mappedBy = "unidadMedida", fetch = FetchType.EAGER)
     private List<Articulo> articuloList;
 
-    public UnidadMedida() {
-    }
-
-    public UnidadMedida(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Measument getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(Measument unidad) {
-        this.unidad = unidad;
-    }
-
-
-    public List<Articulo> getArticuloList() {
-        return articuloList;
-    }
-
-    public void setArticuloList(List<Articulo> articuloList) {
-        this.articuloList = articuloList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UnidadMedida)) {
-            return false;
-        }
-        UnidadMedida other = (UnidadMedida) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.UnidadMedida[ id=" + id + " ]";
-    }
+   
     
 }

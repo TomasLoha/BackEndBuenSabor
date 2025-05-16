@@ -19,12 +19,22 @@ import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "Imagen_Articulo")
 public class ImagenArticulo implements Serializable {
 
@@ -42,68 +52,5 @@ public class ImagenArticulo implements Serializable {
     @OneToMany(mappedBy = "imagenArticulo", fetch = FetchType.EAGER)
     private List<Articulo> articuloList;
 
-    public ImagenArticulo() {
-    }
-
-    public ImagenArticulo(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public List<Articulo> getArticuloList() {
-        return articuloList;
-    }
-
-    public void setArticuloList(List<Articulo> articuloList) {
-        this.articuloList = articuloList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ImagenArticulo)) {
-            return false;
-        }
-        ImagenArticulo other = (ImagenArticulo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.ImagenArticulo[ id=" + id + " ]";
-    }
     
 }

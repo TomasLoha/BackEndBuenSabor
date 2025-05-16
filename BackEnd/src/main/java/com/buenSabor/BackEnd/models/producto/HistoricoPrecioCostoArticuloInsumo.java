@@ -19,12 +19,22 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author oscarloha
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = "id")
 @Table(name = "Historico_Precio_Costo_ArticuloInsumo")
 public class HistoricoPrecioCostoArticuloInsumo implements Serializable {
 
@@ -44,68 +54,5 @@ public class HistoricoPrecioCostoArticuloInsumo implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private ArticuloInsumo idArticuloInsumo;
 
-    public HistoricoPrecioCostoArticuloInsumo() {
-    }
-
-    public HistoricoPrecioCostoArticuloInsumo(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
-
-    public ArticuloInsumo getIdArticuloInsumo() {
-        return idArticuloInsumo;
-    }
-
-    public void setIdArticuloInsumo(ArticuloInsumo idArticuloInsumo) {
-        this.idArticuloInsumo = idArticuloInsumo;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof HistoricoPrecioCostoArticuloInsumo)) {
-            return false;
-        }
-        HistoricoPrecioCostoArticuloInsumo other = (HistoricoPrecioCostoArticuloInsumo) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.buenSabor.BackEnd.models.direccion.HistoricoPrecioCostoArticuloInsumo[ id=" + id + " ]";
-    }
     
 }
